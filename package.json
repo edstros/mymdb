@@ -1,0 +1,35 @@
+{
+  "name": "mymdb",
+  "version": "1.0.0",
+  "description": "movie database",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "./node_modules/.bin/hs -a localhost -p $((RANDOM + 10000)) -o",
+    "build": "./build.sh",
+    "start": "npm run build;  npm run server",
+    "deploy": "npm run build; ./deploy.sh",
+    "watch": "./watch.sh; npm run server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/edstros/mymdb"
+  },
+  "keywords": [
+    "none"
+  ],
+  "author": "Edwin Acevedo (edwin.a.acevedo@gmail.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/edstros/mymdb/issues"
+  },
+  "homepage": "https://github.com/edstros/mymdb",
+  "devDependencies": {
+    "babel": "^5.4.5",
+    "bowcat": "0.0.4",
+    "http-server": "^0.8.0",
+    "jade": "git://github.com/jadejs/jade.git",
+    "node-sass": "^3.1.2",
+    "nodemon": "^1.3.7"
+  }
+}

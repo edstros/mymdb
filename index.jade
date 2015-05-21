@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    title My IMDB
+    |
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    |
+    link(rel='stylesheet', type='text/css', href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css')
+    |
+    link(rel='stylesheet', type='text/css', href='css/main.css')
+  body
+    // begin search form
+    .get-movie
+      form.search-form
+        input(name='search', placeholder='Movie', required='')
+        |
+        input(type='submit', name='get', value='Search')
+    // end search form
+    // begin input from addMovieDetail()
+    .movie-details
+    // end input
+    // `begin button to add movie to table
+    .addMovie
+    // end html
+    script(src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js')
+    |
+    script(src='//cdnjs.cloudflare.com/ajax/libs/lodash.js/3.8.0/lodash.min.js')
+    |
+    script(src='js/main.js')
