@@ -1,0 +1,54 @@
+.container {
+  width: 580px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.get-movie {
+  margin: 20px 0;
+}
+/* table styles */
+
+.table-container {
+  width: 100%;
+  margin: 50px auto;
+  font-size: .85em;
+  padding: 0 15px;
+}
+
+table,
+table {
+  text-align: center;
+}
+
+.rowFormat {
+  border-bottom: 1px solid #333;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+
+.poster {
+  width: 110px;
+  padding: 0 10px;
+}
+
+.title {
+  width: 250px;
+  padding: 0 5%;
+}
+
+.year {
+  width: 40px;
+  padding: 0 10%;
+}
+
+.rating {
+  width: 40px;
+  padding: 0 10%;
+
+}
+
+table img {
+  max-height: 100px;
+  padding: 10%;
+}

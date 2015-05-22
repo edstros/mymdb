@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>What to Watch Next</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body>
+    <div class="div container">
+      <h1>What to Watch Next</h1>
+      <p>Save a list of movies you want to watch later. Enter the name of your movie below.</p><!--begin search form-->
+      <div class="get-movie">
+        <form class="search-form">
+          <input name="search" placeholder="Movie" required="">
+          <input type="submit" name="get" value="Search" class="btn btn-default btn-xs">
+        </form>
+      </div><!--end search form-->
+      <!--begin input from addMovieDetail() -->
+      <div class="movie-details"></div><!--end input-->
+      <div class="save-movie"><!--begin button to add movie to table -->
+        <div class="addMovie">
+          <div class="table-container">
+            <table>
+              <tr>
+                <td class="poster">Poster</td>
+                <td class="title">Title</td>
+                <td class="year">Year</td>
+                <td class="rating">IMDB Rating</td>
+                <td class="watched">Watched</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div><!--end html-->
+      <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+      <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/3.8.0/lodash.min.js"></script>
+      <script src="js/main.js"></script>
+      <script src="js/firebase.js"></script>
+    </div>
+  </body>
+</html>
