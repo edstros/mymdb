@@ -1,0 +1,37 @@
+doctype html
+html
+  head
+    title What to Watch Next
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css')
+    link(rel='stylesheet', href='css/main.css')
+  body
+    .div.container
+      h1 What to Watch Next
+      p Save a list of movies you want to watch later. Enter the name of your movie below.
+      <!--begin search form-->
+      .get-movie
+        form.search-form
+          input(name='search', placeholder='Movie', required='')
+          input.btn.btn-default.btn-xs(type='submit', name='get', value='Search')
+      <!--end search form-->
+      <!--begin input from addMovieDetail() -->
+      .movie-details
+      <!--end input-->
+      .save-movie
+        <!--begin button to add movie to table -->
+        .addMovie
+          .table-container
+            table
+              tr
+                td.poster Poster
+                td.title Title
+                td.year Year
+                td.rating IMDB Rating
+                td.watched Watched
+      <!--end html-->
+      script(src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js')
+      script(src='https://cdn.firebase.com/js/client/2.2.4/firebase.js')
+      script(src='//cdnjs.cloudflare.com/ajax/libs/lodash.js/3.8.0/lodash.min.js')
+      script(src='js/main.js')
+

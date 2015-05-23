@@ -1,43 +1,39 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>What to Watch Next</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Movies&#33;</title>
     <link rel="stylesheet" href="css/main.css">
   </head>
   <body>
-    <div class="div container">
-      <h1>What to Watch Next</h1>
-      <p>Save a list of movies you want to watch later. Enter the name of your movie below.</p><!--begin search form-->
-      <div class="get-movie">
-        <form class="search-form">
-          <input name="search" placeholder="Movie" required="">
-          <input type="submit" name="get" value="Search" class="btn btn-default btn-xs">
-        </form>
-      </div><!--end search form-->
-      <!--begin input from addMovieDetail() -->
-      <div class="movie-details"></div><!--end input-->
-      <div class="save-movie"><!--begin button to add movie to table -->
-        <div class="addMovie">
-          <div class="table-container">
-            <table>
-              <tr>
-                <td class="poster">Poster</td>
-                <td class="title">Title</td>
-                <td class="year">Year</td>
-                <td class="rating">IMDB Rating</td>
-                <td class="watched">Watched</td>
-              </tr>
-            </table>
-          </div>
-        </div>
-      </div><!--end html-->
-      <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-      <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
-      <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/3.8.0/lodash.min.js"></script>
-      <script src="js/main.js"></script>
-      <script src="js/firebase.js"></script>
+    <div class="onLoggedOut hidden">
+      <h1>Login</h1>
+      <form>
+        <input type="email" placeholder="email" required>
+        <input type="password" placeholder="password" required>
+        <input type="button" value="Register" class="doRegister btn btn-default btn-xs">
+        <input type="submit" value="Login" class="btn btn-default btn-xs">
+        <input type="button" value="Reset Password" class="doResetPassword">
+      </form>
     </div>
+    <div class="onTempPassword hidden">
+      <h1>Change Password</h1>
+      <form>
+        <input type="password" placeholder="Current Password">
+        <input type="password" placeholder="New Password">
+        <input type="submit" value="Change Password">
+      </form>
+    </div>
+    <div class="onLoggedIn">
+      <h1>Welcome to Your Movies&#33;</h1>
+      <button class="doLogout btn btn-default btn-xs">Logout</button>
+      <button href="movies.html" class="btn btn-default btn-xs">Go to your movies</button>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/3.8.0/lodash.min.js"></script>
+    <script src="js/firebase.js"></script>
   </body>
 </html>

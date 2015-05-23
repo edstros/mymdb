@@ -1,37 +1,33 @@
 doctype html
 html
   head
-    title What to Watch Next
-    meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css')
+    meta(charset='utf-8')
+    meta(http-equiv='x-ua-compatible', content='ie-edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title Movies&#33;
     link(rel='stylesheet', href='css/main.css')
   body
-    .div.container
-      h1 What to Watch Next
-      p Save a list of movies you want to watch later. Enter the name of your movie below.
-      <!--begin search form-->
-      .get-movie
-        form.search-form
-          input(name='search', placeholder='Movie', required='')
-          input.btn.btn-default.btn-xs(type='submit', name='get', value='Search')
-      <!--end search form-->
-      <!--begin input from addMovieDetail() -->
-      .movie-details
-      <!--end input-->
-      .save-movie
-        <!--begin button to add movie to table -->
-        .addMovie
-          .table-container
-            table
-              tr
-                td.poster Poster
-                td.title Title
-                td.year Year
-                td.rating IMDB Rating
-                td.watched Watched
-      <!--end html-->
-      script(src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js')
-      script(src='https://cdn.firebase.com/js/client/2.2.4/firebase.js')
-      script(src='//cdnjs.cloudflare.com/ajax/libs/lodash.js/3.8.0/lodash.min.js')
-      script(src='js/main.js')
-      script(src='js/firebase.js')
+    .onLoggedOut.hidden
+      h1 Login
+      form
+        input(type="email", placeholder="email", required)
+        input(type="password", placeholder="password", required)
+        input.doRegister.btn.btn-default.btn-xs(type="button", value="Register")
+        input.btn.btn-default.btn-xs(type="submit", value="Login")
+        input.doResetPassword(type="button", value="Reset Password")
+    .onTempPassword.hidden
+      h1 Change Password
+      form
+        input(type="password", placeholder="Current Password")
+        input(type="password", placeholder="New Password")
+        input(type="submit", value="Change Password")
+    .onLoggedIn
+      h1 Welcome to Your Movies&#33;
+      form
+        button.doLogout.btn.btn-default.btn-xs Logout
+        button.btn.btn-default.btn-xs(href='movies.html') Go to your movies
+
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js')
+    script(src='https://cdn.firebase.com/js/client/2.2.4/firebase.js')
+    script(src='//cdnjs.cloudflare.com/ajax/libs/lodash.js/3.8.0/lodash.min.js')
+    script(src='js/firebase.js')
