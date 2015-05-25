@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/main.css">
   </head>
   <body>
-    <div class="onLoggedOut hidden">
+    <div class="onLoggedOut">
       <h1>Login</h1>
       <form>
         <input type="email" placeholder="email" required>
@@ -28,8 +28,10 @@
     </div>
     <div class="onLoggedIn">
       <h1>Welcome to Your Movies&#33;</h1>
-      <button class="doLogout btn btn-default btn-xs">Logout</button>
-      <button href="movies.html" class="btn btn-default btn-xs">Go to your movies</button>
+      <form>
+        <button class="doLogout btn btn-default btn-xs">Logout</button>
+        <button href="movies.html" class="btn btn-default btn-xs">Go to your movies</button>
+      </form>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
