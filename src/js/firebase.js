@@ -1,6 +1,6 @@
 'use strict';
 
-var FIREBASE_URL = 'https://c9auth.firebaseio.com/';
+var FIREBASE_URL = 'https://eamdb.firebaseio.com/';
 var fb = new Firebase(FIREBASE_URL);
 var initLoad = true;
 
@@ -8,7 +8,7 @@ $('.onLoggedIn form').submit(function () {
   var url = $('.onLoggedIn input[type="url"]').val();
   var uid = fb.getAuth().uid;
   var token = fb.getAuth().token;
-  var postUrl = `${FIREBASE_URL}/users/${uid}/fotos.json?auth=${token}`;
+  var postUrl = `${FIREBASE_URL}users/${uid}/movies.json?auth=${token}`;
 
 
   $.post(postUrl, JSON.stringify(url), function (res) {
@@ -59,6 +59,11 @@ $('.doLogout').click(function () {
     window.location.reload();
   });
 })
+
+$(".goToMovies").click(function() {
+    window.location = "movies.html";
+});
+
 
 $('.doRegister').click(function () {
   var email = $('.onLoggedOut input[type="email"]').val();
@@ -120,7 +125,7 @@ function doLogin (email, password, cb) {
 function getUserData (cb) {
   var uid = fb.getAuth().uid;
   var token = fb.getAuth().token;
-  var getUrl = `${FIREBASE_URL}/users/${uid}/fotos.json?auth=${token}`;
+  var getUrl = `${FIREBASE_URL}/users/${uid}/movies.json?auth=${token}`;
   $.get(getUrl, cb);
 }
 
