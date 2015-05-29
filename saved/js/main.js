@@ -24,7 +24,7 @@ console.log(authData);
 
 $('.onLoggedIn form').submit(function () {
   var url = $('.onLoggedIn input[type="url"]').val();
-
+  console.log(url);
   var uid = fb.getAuth().uid;
   var token = fb.getAuth().token;
   //var postUrl = `${FIREBASE_URL}users/${uid}/movies.json?auth=${token}`;//doesn't like babel yet

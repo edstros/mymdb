@@ -1,5 +1,4 @@
 'use strict';
-
 var FIREBASE_URL = 'https://eamdb.firebaseio.com/';
 var fb = new Firebase(FIREBASE_URL);
 var initLoad = true;
@@ -7,16 +6,20 @@ var initLoad = true;
 $('.onLoggedIn form').submit(function () {
   var url = $('.onLoggedIn input[type="url"]').val();
   var uid = fb.getAuth().uid;
+  console.log(uid);
   var token = fb.getAuth().token;
-  var postUrl = `${FIREBASE_URL}users/${uid}/movies.json?auth=${token}`;
-
-
+  var postUrl = FIREBASE_URL + '/users/' + uid + '/movies.json?auth=$token';
   $.post(postUrl, JSON.stringify(url), function (res) {
-    addPhotosToDom({url: url});
+    console.log(url);
+    console.log(token);
+    console.log(postUrl);
+    console.log(uid);
+    addMoviesToDom({
+      url: url
+    });
     clearForms();
     // res = { name: '-Jk4dfDd123' }
   });
-
   event.preventDefault();
 })
 
@@ -24,25 +27,21 @@ $('.onTempPassword form').submit(function () {
   var email = fb.getAuth().password.email;
   var oldPw = $('.onTempPassword input:nth-child(1)').val();
   var newPw = $('.onTempPassword input:nth-child(2)').val();
-
   fb.changePassword({
     email: email,
     oldPassword: oldPw,
     newPassword: newPw
-  }, function(err) {
+  }, function (err) {
     if (err) {
       alert(err.toString());
     } else {
       fb.unauth();
     }
   });
-
   event.preventDefault();
 })
-
 $('.doResetPassword').click(function () {
   var email = $('.onLoggedOut input[type="email"]').val();
-
   fb.resetPassword({
     email: email
   }, function (err) {
@@ -53,22 +52,17 @@ $('.doResetPassword').click(function () {
     }
   });
 });
-
 $('.doLogout').click(function () {
   fb.unauth(function () {
     window.location.reload();
   });
 })
-
-$(".goToMovies").click(function() {
-    window.location = "movies.html";
+$(".goToMovies").click(function () {
+  window.location = "movies.html";
 });
-
-
 $('.doRegister').click(function () {
   var email = $('.onLoggedOut input[type="email"]').val();
   var password = $('.onLoggedOut input[type="password"]').val();
-
   fb.createUser({
     email: email,
     password: password
@@ -82,33 +76,27 @@ $('.doRegister').click(function () {
       });
     }
   });
-
   event.preventDefault();
 });
-
 $('.onLoggedOut form').submit(function () {
   var email = $('.onLoggedOut input[type="email"]').val();
   var password = $('.onLoggedOut input[type="password"]').val();
-
   doLogin(email, password, function () {
     window.location.reload();
   });
   event.preventDefault();
 });
-
-function clearForms () {
+function clearForms() {
   $('input[type="text"], input[type="email"], input[type="password"], input[type="url"]').val('');
 }
-
-function saveAuthData (authData) {
+function saveAuthData(authData) {
   $.ajax({
     method: 'PUT',
-    url: `${FIREBASE_URL}/users/${authData.uid}/profile.json?auth=${authData.token}`,
+    url: `${FIREBASE_URL}users/${authData.uid}/profile.json?auth=${authData.token}`,
     data: JSON.stringify(authData)
   });
 }
-
-function doLogin (email, password, cb) {
+function doLogin(email, password, cb) {
   fb.authWithPassword({
     email: email,
     password: password
@@ -121,28 +109,46 @@ function doLogin (email, password, cb) {
     }
   });
 }
-
-function getUserData (cb) {
+function getUserData(cb) {
   var uid = fb.getAuth().uid;
   var token = fb.getAuth().token;
   var getUrl = `${FIREBASE_URL}/users/${uid}/movies.json?auth=${token}`;
   $.get(getUrl, cb);
 }
-
-function addPhotosToDom (photos) {
-  if (photos) {
-    Object.keys(photos).forEach(function (uuid){
-    	$(`<img src="${photos[uuid]}" data-uid="${uuid}">`).appendTo($('.favFotos'));
-  	})
+function addMoviesToDom(movies) {
+  if (movies) {
+    Object.keys(movies).forEach(function (uuid) {
+      $(`<img src="${movies[uuid]}" data-uid="${uuid}">`).appendTo($('.favMovies'));
+    })
   }
 }
+
+
+
+/*
+$('.onLoggedIn form').submit(function () {
+  debugger;
+  var url = $('.onLoggedIn input[type="url"]').val();
+  var uid = fb.getAuth().uid;
+  var token = fb.getAuth().token;
+  //var postUrl = `${FIREBASE_URL}users/${uid}/movies.json?auth=${token}`;//doesn't like babel yet
+    var postUrl = FIREBASE_URL + '/users/' + uid + '/movies.json?auth=$token';$.post(postUrl, JSON.stringify(url), function (res) {
+    console.log(url);
+    console.log(token);
+    console.log(postUrl);
+    console.log(uid);
+    addMoviesToDom({
+      url: url
+    });
+    clearForms();
+*/
+
 
 fb.onAuth(function (authData) {
   if (initLoad) {
     var onLoggedOut = $('.onLoggedOut');
     var onLoggedIn = $('.onLoggedIn');
     var onTempPassword = $('.onTempPassword');
-
     if (authData && authData.password.isTemporaryPassword) {
       // temporary log in
       onTempPassword.removeClass('hidden');
@@ -154,18 +160,26 @@ fb.onAuth(function (authData) {
       onLoggedOut.addClass('hidden');
       onTempPassword.addClass('hidden');
       $('.onLoggedIn h1').text(`Hello ${authData.password.email}`);
-      getUserData(function (urls) {
-        addPhotosToDom(urls);
-      });
+      //getUserData(function (urls) {
+      //  addMoviesToDom(urls);
+
+  var url = $('.onLoggedIn input[type="url"]').val();
+  var uid = fb.getAuth().uid;
+  var token = fb.getAuth().token;
+  //var postUrl = `${FIREBASE_URL}users/${uid}/movies.json?auth=${token}`;//doesn't like babel yet
+    var postUrl = FIREBASE_URL + 'users/' + uid + '/movies.json?auth=$token';$.post(postUrl, JSON.stringify(url), function (res) {
+    console.log(url);
+    console.log(token);
+    console.log(postUrl);
+    console.log(uid);
+    });
     } else {
       // on logged out
       onLoggedOut.removeClass('hidden');
       onLoggedIn.addClass('hidden');
       onTempPassword.addClass('hidden');
     }
-
-  	clearForms();
+    clearForms();
   }
-
   initLoad = false;
 });
